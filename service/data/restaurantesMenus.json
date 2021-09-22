@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Restaurante 1",
+    "phone": "+34 000 000 000",
+    "menu": [
+      {
+        "key": "primeros",
+        "items": [
+          "Plato 1",
+          "Plato 2",
+          "Plato 3"
+        ]
+      },
+      {
+        "key": "segundos",
+        "items": [
+          "Plato 1b",
+          "Plato 2b",
+          "Plato 3b"
+        ]
+      }
+    ],
+    "price": 12,
+    "onlineEnabled": true
+  },
+  {
+    "id": 2,
+    "name": "Restaurante 2",
+    "phone": "+34 000 000 000",
+    "menu": [
+      {
+        "key": "primeros",
+        "items": [
+          "Plato 1",
+          "Plato 2",
+          "Plato 3"
+        ]
+      },
+      {
+        "key": "segundos",
+        "items": [
+          "Plato 1b",
+          "Plato 2b",
+          "Plato 3b"
+        ]
+      }
+    ],
+    "price": 15,
+    "onlineEnabled": false
+  }
+]

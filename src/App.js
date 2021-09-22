@@ -1,25 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import Login from "./modules/login/Login";
+import RestaurantsList from "./modules/restaurantsList/RestaurantsList";
+import Header from "./components/header/Header";
+import {connect} from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(props) {
+    const {
+        userInfo
+    } = props;
+
+    return (
+        <>
+            {userInfo &&
+            <Header/>
+            }
+            <Router>
+                <Switch>
+                    <Route exact={true} path="/">
+                        {!userInfo &&
+                        <Login/>
+                        }
+                        {userInfo &&
+                        <Redirect
+                            to={
+                                {
+                                    pathname: 'home'
+                                }
+                            }
+                        />
+                        }
+                    </Route>
+                    {userInfo &&
+                    <Route path="/home">
+                        <RestaurantsList/>
+                    </Route>
+                    }
+                </Switch>
+            </Router>
+        </>
+    );
 }
 
-export default App;
+
+export default connect(
+    store => ({
+        userInfo: store.login.userInfo
+    }), null
+)(App)

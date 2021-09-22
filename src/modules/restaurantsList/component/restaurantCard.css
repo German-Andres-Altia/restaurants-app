@@ -1,0 +1,26 @@
+.restaurants {
+    padding: 8px;
+}
+
+
+.restaurant-card {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #D7D7D7;
+}
+
+.restaurant-card:first-child {
+    margin-top: 20px;
+}
+
+.restaurant-card ul {
+}
+
+.restaurant-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+button.pedir{
+
+}
