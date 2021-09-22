@@ -1,3 +1,8 @@
+.restaurants {
+    padding: 8px;
+    overflow: scroll;
+    height: calc(100vh - 97px);
+}
 
 
 

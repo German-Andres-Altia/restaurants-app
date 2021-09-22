@@ -21,9 +21,11 @@ function RestaurantsList(props) {
     const restaurantsContainer = useRef(null);
     if(restaurantsContainer.current){
         restaurantsContainer.current.onscroll = () => {
-            const totalHeight =  restaurantsContainer.current.
-            if()
-            getRestaurantes((restaurantes.start + 1) * restaurantes.limit, restaurantes.limit)
+            const position = restaurantsContainer.current.scrollHeight - restaurantsContainer.current.clientHeight - restaurantsContainer.current.scrollTop
+            if(position <  restaurantsContainer.current.clientHeight ){
+                getRestaurantes(restaurantes.start + restaurantes.limit, restaurantes.limit)
+            }
+
         }
     }
 

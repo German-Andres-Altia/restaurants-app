@@ -22,7 +22,10 @@ const menus = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                restaurantes: action.restaurantes
+                restaurantes: {
+                    ...action.restaurantes,
+                    results: [...state.restaurantes.results, ...action.restaurantes.results]
+                }
             };
         default:
             return state;
