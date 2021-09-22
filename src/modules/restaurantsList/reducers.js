@@ -1,7 +1,12 @@
 import {RESTAURANTES_REQUEST, RESTAURANTES_RESPONSE} from './actions';
 
 const initialState = {
-    restaurantes: [],
+    restaurantes: {
+        start: 0,
+        limit: 0,
+        count: 0,
+        results: [],
+    },
     loading: false,
     error: null
 };

@@ -1,8 +1,10 @@
 import './restaurantslist.css';
 import {getRestaurantes} from "./actions";
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import {RestaurantCard} from "./component/RestaurantCard";
 import {connect} from "react-redux";
+
+const LIMIT_PER_PAGE = 20;
 
 function RestaurantsList(props) {
 
@@ -13,11 +15,20 @@ function RestaurantsList(props) {
     } = props
 
     useEffect(() => {
-        getRestaurantes()
+        getRestaurantes(0, LIMIT_PER_PAGE)
     }, []);
 
+    const restaurantsContainer = useRef(null);
+    if(restaurantsContainer.current){
+        restaurantsContainer.current.onscroll = () => {
+            const totalHeight =  restaurantsContainer.current.
+            if()
+            getRestaurantes((restaurantes.start + 1) * restaurantes.limit, restaurantes.limit)
+        }
+    }
+
     const Items = React.memo(() => <>
-        {restaurantes.map(menuItem =>
+        {restaurantes.results.map(menuItem =>
             <RestaurantCard restaurant={menuItem} key={menuItem.id}/>
         )}
     </>, [restaurantes]);
@@ -27,12 +38,9 @@ function RestaurantsList(props) {
             {loading &&
             <div className="loading">Cargando...</div>
             }
-            {!loading &&
-            <button onClick={() => getRestaurantes()}>Reload</button>
-            }
-            <div className="restaurants">
+            <div className="restaurants" ref={restaurantsContainer}>
                 {!loading &&
-                <Items/>
+                    <Items/>
                 }
             </div>
         </>
@@ -46,6 +54,6 @@ export default connect(
         loading: store.menus.loading,
     }),
     dispatch => ({
-            getRestaurantes: () => dispatch(getRestaurantes())
+            getRestaurantes: (start, limit) => dispatch(getRestaurantes(start, limit))
         })
     )(RestaurantsList);
