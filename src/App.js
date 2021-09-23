@@ -4,6 +4,7 @@ import Login from "./modules/login/Login";
 import RestaurantsList from "./modules/restaurantsList/RestaurantsList";
 import Header from "./components/header/Header";
 import {connect} from "react-redux";
+import PrivateRoute from  "./components/privateRoute/PrivateRoute";
 
 function App(props) {
     const {
@@ -31,11 +32,9 @@ function App(props) {
                         />
                         }
                     </Route>
-                    {userInfo &&
-                    <Route path="/home">
+                    <PrivateRoute path="/home">
                         <RestaurantsList/>
-                    </Route>
-                    }
+                    </PrivateRoute>
                 </Switch>
             </Router>
         </>

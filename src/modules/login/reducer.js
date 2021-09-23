@@ -4,7 +4,7 @@ import {
 } from './actions';
 
 const initialState = {
-    userInfo: {name: 'Pepe'},
+    userInfo: null,
     loading: false,
     error: null
 };
